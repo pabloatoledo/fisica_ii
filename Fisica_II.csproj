@@ -65,7 +65,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ctrlLista.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
