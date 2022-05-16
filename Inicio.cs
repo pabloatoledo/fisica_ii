@@ -211,19 +211,19 @@ namespace Fisica_II
             {
                 case 1:
                     double Tk = double.Parse(txtVal1.Text);
-                    double Tf = (9 / 5) * (Tk - 273.15) + 32;
+                    double Tf = (9.0 / 5.0) * (Tk - 273.15) + 32;
                     txtFinal.Text = Tf.ToString();
                     break;
 
                 case 2:
                     double Tc = double.Parse(txtVal1.Text);
-                    Tf = (9 / 5) * Tc + 32;
+                    Tf = (9.0 / 5.0) * Tc + 32;
                     txtFinal.Text = Tf.ToString();
                     break;
 
                 case 3:
                     Tf = double.Parse(txtVal1.Text);
-                    Tc = (5 / 9) * (Tf - 32);
+                    Tc = (5.0 / 9.0) * (Tf - 32);
                     txtFinal.Text = Tc.ToString();
                     break;
 
@@ -241,7 +241,7 @@ namespace Fisica_II
 
                 case 6:
                     Tf = double.Parse(txtVal1.Text);
-                    Tk = (5 / 9) * (Tf - 32) + 273.15;
+                    Tk = (5.0 / 9.0) * (Tf - 32) + 273.15;
                     txtFinal.Text = Tk.ToString();
                     break;
             }
