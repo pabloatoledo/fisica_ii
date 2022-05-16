@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTema = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvAnteriores = new System.Windows.Forms.DataGridView();
             this.tblForm1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtFinal = new System.Windows.Forms.TextBox();
             this.lblFinal = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.btnCalcular = new System.Windows.Forms.Button();
             this.tblPrincipal.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).BeginInit();
             this.tblForm1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             this.tblPrincipal.ColumnCount = 1;
             this.tblPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPrincipal.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tblPrincipal.Controls.Add(this.dataGridView1, 0, 2);
+            this.tblPrincipal.Controls.Add(this.dgvAnteriores, 0, 2);
             this.tblPrincipal.Controls.Add(this.tblForm1, 0, 1);
             this.tblPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblPrincipal.Location = new System.Drawing.Point(0, 0);
@@ -188,17 +188,16 @@
             this.cmbTema.TabIndex = 1;
             this.cmbTema.SelectedIndexChanged += new System.EventHandler(this.actSubtemas);
             // 
-            // dataGridView1
+            // dgvAnteriores
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 423);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1023, 135);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvAnteriores.AllowUserToAddRows = false;
+            this.dgvAnteriores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAnteriores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAnteriores.Location = new System.Drawing.Point(3, 423);
+            this.dgvAnteriores.Name = "dgvAnteriores";
+            this.dgvAnteriores.ReadOnly = true;
+            this.dgvAnteriores.Size = new System.Drawing.Size(1023, 135);
+            this.dgvAnteriores.TabIndex = 1;
             // 
             // tblForm1
             // 
@@ -428,7 +427,7 @@
             this.tblPrincipal.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).EndInit();
             this.tblForm1.ResumeLayout(false);
             this.tblForm1.PerformLayout();
             this.ResumeLayout(false);
@@ -445,7 +444,7 @@
         private System.Windows.Forms.ComboBox cmbFormula;
         private System.Windows.Forms.ComboBox cmbSubtema;
         public System.Windows.Forms.ComboBox cmbTema;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvAnteriores;
         private System.Windows.Forms.TableLayoutPanel tblForm1;
         private System.Windows.Forms.TextBox txtVal6;
         private System.Windows.Forms.TextBox txtVal5;

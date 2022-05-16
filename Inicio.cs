@@ -13,13 +13,13 @@ namespace Fisica_II
 {
     public partial class Fisica_II : Form
     {
-        private int Valores, Formula;
+        private int Valores, Formula, contHisto;
+        private DataTable dt;     //usada para el datagridview con historicos
 
         public Fisica_II()
         {
             InitializeComponent();
-
-        }
+        }           
 
         private void Fisica_II_Load(object sender, EventArgs e)
         {
@@ -27,6 +27,13 @@ namespace Fisica_II
             //DB.InsertData(DB.CreateConnection());       //Inserta la info en la db
             cmbTema.Items.Clear();
             cargaTemas(DB.CreateConnection());
+
+
+            dt = new DataTable();
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Formula");
+            dt.Columns.Add("Resultado");
+            dgvAnteriores.DataSource = dt;
         }
 
         private void actSubtemas(object sender, EventArgs e)
@@ -238,6 +245,17 @@ namespace Fisica_II
                     txtFinal.Text = Tk.ToString();
                     break;
             }
+            llenaDataGrid();
+        }
+
+        private void llenaDataGrid()
+        {
+            DataRow row = dt.NewRow();
+            row["Id"] = contHisto;
+            row["Formula"] = cmbFormula.SelectedItem.ToString();
+            row["Resultado"] = txtFinal.Text.ToString();
+            dt.Rows.Add(row);
+            contHisto++;
         }
     }
 }

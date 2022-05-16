@@ -80,6 +80,7 @@ namespace Fisica_II
             string tablaSubtemas12 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(12, 'Conducción, convección y radiación', 'Termodinamica'); ";
             */
 
+            
             string tablaFormula1 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(1, 'Tf = 9/5.(Tk - 273.15) + 32º', 'Temperatura y escalas de temperatura'); ";
             string tablaFormula2 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(2, 'Tf = 9/5.Tc + 32º', 'Temperatura y escalas de temperatura'); ";
             string tablaFormula3 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(3, 'Tc = 5/9.(Tf - 32º)', 'Temperatura y escalas de temperatura'); ";
@@ -87,6 +88,8 @@ namespace Fisica_II
             string tablaFormula5 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(5, 'Tk = Tc + 273.15', 'Temperatura y escalas de temperatura'); ";
             string tablaFormula6 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(6, 'Tk = 5/9.(Tf - 32º) + 273.15', 'Temperatura y escalas de temperatura'); ";
             
+
+
             SQLiteCommand sqlite_cmd;
 
             sqlite_cmd = conn.CreateCommand();
