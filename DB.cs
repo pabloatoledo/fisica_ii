@@ -40,7 +40,7 @@ namespace Fisica_II
 
         public static void CreateTable(SQLiteConnection conn)
         {
-
+            
             SQLiteCommand sqlite_cmd;
             string Createsql = "CREATE TABLE Tema(IdTema INT, Tema VARCHAR(75))";
             string Createsql1 = "CREATE TABLE Subtema(IdSubtema INT, Subtema VARCHAR(75), indexTema INT)";
@@ -64,6 +64,7 @@ namespace Fisica_II
             string tablaTemas2 = "INSERT INTO Tema(IdTema, Tema) VALUES(3, 'Optica'); ";
             */
 
+            /*
             string tablaSubtemas1 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(1, 'Movimiento periodico', 'Ondas'); ";
             string tablaSubtemas2 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(2, 'Movimiento armonico simple', 'Ondas'); ";
             string tablaSubtemas3 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(3, 'Energia en movimiento armonico simple', 'Ondas'); ";
@@ -73,28 +74,35 @@ namespace Fisica_II
             string tablaSubtemas7 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(7, 'Oscilaciones amortiguadas', 'Ondas'); ";
             string tablaSubtemas8 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(8, 'Oscilaciones impulsadas y resonancia', 'Ondas'); ";
 
-
             string tablaSubtemas9 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(9, 'Temperatura y escalas de temperatura', 'Termodinamica'); ";
             string tablaSubtemas10 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(10, 'Expansion termica y esfuerzo termico', 'Termodinamica'); ";
             string tablaSubtemas11 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(11, 'Calor, cambios de fase y calorimetria', 'Termodinamica'); ";
             string tablaSubtemas12 = "INSERT INTO Subtema(IdSubtema, Subtema, Tema) VALUES(12, 'Conducción, convección y radiación', 'Termodinamica'); ";
+            */
 
-
+            string tablaFormula1 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(1, 'Tf = 9/5.(Tk - 273.15) + 32º', 'Temperatura y escalas de temperatura'); ";
+            string tablaFormula2 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(2, 'Tf = 9/5.Tc + 32º', 'Temperatura y escalas de temperatura'); ";
+            string tablaFormula3 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(3, 'Tc = 5/9.(Tf - 32º)', 'Temperatura y escalas de temperatura'); ";
+            string tablaFormula4 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(4, 'Tc = Tk - 273.15', 'Temperatura y escalas de temperatura'); ";
+            string tablaFormula5 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(5, 'Tk = Tc + 273.15', 'Temperatura y escalas de temperatura'); ";
+            string tablaFormula6 = "INSERT INTO Formula(IdFormula, Formula, Subtema) VALUES(6, 'Tk = 5/9.(Tf - 32º) + 273.15', 'Temperatura y escalas de temperatura'); ";
+            
             SQLiteCommand sqlite_cmd;
 
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = tablaSubtemas1;
+            sqlite_cmd.CommandText = tablaFormula1;
             sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = tablaSubtemas2;
+            sqlite_cmd.CommandText = tablaFormula2;
             sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = tablaSubtemas3;
+            sqlite_cmd.CommandText = tablaFormula3;
             sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = tablaSubtemas4;
+            sqlite_cmd.CommandText = tablaFormula4;
             sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = tablaSubtemas5;
+            sqlite_cmd.CommandText = tablaFormula5;
             sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = tablaSubtemas6;
+            sqlite_cmd.CommandText = tablaFormula6;
             sqlite_cmd.ExecuteNonQuery();
+            /*
             sqlite_cmd.CommandText = tablaSubtemas7;
             sqlite_cmd.ExecuteNonQuery();
             sqlite_cmd.CommandText = tablaSubtemas8;
@@ -108,6 +116,7 @@ namespace Fisica_II
             sqlite_cmd.ExecuteNonQuery();
             sqlite_cmd.CommandText = tablaSubtemas12;
             sqlite_cmd.ExecuteNonQuery();
+            */
         }
 
         public static void ReadData(SQLiteConnection conn)
