@@ -72,6 +72,7 @@ namespace Fisica_II
 
         private void actSubtemas(object sender, EventArgs e)
         {
+            cmbCoef.Visible = false;
             cmbSubtema.Items.Clear();
             cargaSubtemas(DB.CreateConnection());
         }
@@ -95,6 +96,7 @@ namespace Fisica_II
         private void actFormulas(object sender, EventArgs e)
         {
             cmbFormula.Items.Clear();
+            cmbCoef.Visible = false;
             cargaFormula(DB.CreateConnection());
             listaCoeficientes(cmbSubtema.SelectedItem.ToString(), DB.CreateConnection());
         }
@@ -196,6 +198,7 @@ namespace Fisica_II
         {
             if (subtema == "Dilatacion materiales lineal" || subtema == "Dilatacion materiales por volumen")
             {
+                cmbCoef.Items.Clear();
                 SQLiteDataReader sqlite_datareader;
                 SQLiteCommand sqlite_cmd;
                 sqlite_cmd = conn.CreateCommand();
@@ -221,10 +224,12 @@ namespace Fisica_II
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
-                double coef = sqlite_datareader.GetDouble(2);
+                
+                double coe = sqlite_datareader.GetDouble(2);
+                coef = coe;
                 if (cmbSubtema.Text == "Dilatacion materiales por volumen")
                 {
-                    coef = coef * 3;
+                    coef = coe * 3;
                 }
                 txtVal1.Text = coef.ToString();
                 //txtVal1.Enabled = false;
@@ -234,11 +239,9 @@ namespace Fisica_II
         
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T;
+            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV;
             switch (Formula)
             {
-                
-
                 case 1:
                     Tk = double.Parse(txtVal1.Text);
                     Tf = (9.0 / 5.0) * (Tk - 273.15) + 32;
@@ -276,7 +279,7 @@ namespace Fisica_II
                     break;
 
                 case 7:
-                    a = double.Parse(txtVal1.Text);
+                    a = coef;
                     L0 = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     dL = a * L0 * dT;
@@ -284,7 +287,7 @@ namespace Fisica_II
                     break;
 
                 case 8:
-                    a = double.Parse(txtVal1.Text);
+                    a = coef;
                     L0 = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     L = L0 + (a * L0 * dT);
@@ -292,7 +295,7 @@ namespace Fisica_II
                     break;
 
                 case 9:
-                    a = double.Parse(txtVal1.Text);
+                    a = coef;
                     dL = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     L0 = dL / (a * dT);
@@ -300,7 +303,7 @@ namespace Fisica_II
                     break;
 
                 case 10:
-                    a = double.Parse(txtVal1.Text);
+                    a = coef;
                     dL = double.Parse(txtVal2.Text);
                     L0 = double.Parse(txtVal3.Text);
                     dT = dL / (a * L0);
@@ -308,7 +311,7 @@ namespace Fisica_II
                     break;
 
                 case 11:
-                    a = double.Parse(txtVal1.Text);
+                    a = coef;
                     T0 = double.Parse(txtVal2.Text);
                     dL = double.Parse(txtVal3.Text);
                     L0 = double.Parse(txtVal4.Text);
@@ -317,15 +320,66 @@ namespace Fisica_II
                     break;
 
                 case 12:
-                    a = double.Parse(txtVal1.Text);
+                    a = coef;
                     T = double.Parse(txtVal2.Text);
                     dL = double.Parse(txtVal3.Text);
                     L0 = double.Parse(txtVal4.Text);
                     T0 = T - (dL / (a * L0));
                     txtFinal.Text = T0.ToString() + " " + unidad;
                     break;
+
+                case 13:
+                    b = coef;
+                    V0 = double.Parse(txtVal2.Text);
+                    dT = double.Parse(txtVal3.Text);
+                    dV = b * V0 * dT;
+                    txtFinal.Text = dV.ToString() + " " + unidad;
+                    break;
+
+                case 14:
+                    b = coef;
+                    V0 = double.Parse(txtVal2.Text);
+                    dT = double.Parse(txtVal3.Text);
+                    V = V0 + (b * V0 * dT);
+                    txtFinal.Text = V.ToString() + " " + unidad;
+                    break;
+
+                case 15:
+                    b = coef;
+                    dV = double.Parse(txtVal2.Text);
+                    dT = double.Parse(txtVal3.Text);
+                    V0 = dV / (b * dT);
+                    txtFinal.Text = V0.ToString() + " " + unidad;
+                    break;
+
+                case 16:
+                    b = coef;
+                    dV = double.Parse(txtVal2.Text);
+                    V0 = double.Parse(txtVal3.Text);
+                    dT = dV / (b * V0);
+                    txtFinal.Text = dT.ToString() + " " + unidad;
+                    break;
+
+                case 17:
+                    b = coef;
+                    T0 = double.Parse(txtVal2.Text);
+                    dV = double.Parse(txtVal3.Text);
+                    V0 = double.Parse(txtVal4.Text);
+                    T = T0 + (dV / (b * V0));
+                    txtFinal.Text = T.ToString() + " " + unidad;
+                    break;
+
+                case 18:
+                    b = coef;
+                    T = double.Parse(txtVal2.Text);
+                    dV = double.Parse(txtVal3.Text);
+                    V0 = double.Parse(txtVal4.Text);
+                    T0 = T - (dV / (b * V0));
+                    txtFinal.Text = T0.ToString() + " " + unidad;
+                    break;
             }
             llenaDataGrid();
+            
         }
 
         private void llenaDataGrid()
@@ -342,16 +396,22 @@ namespace Fisica_II
         {
             lblVal1.Visible = false;
             txtVal1.Visible = false;
+            txtVal1.Text = "";
             lblVal2.Visible = false;
             txtVal2.Visible = false;
+            txtVal2.Text = "";
             lblVal3.Visible = false;
             txtVal3.Visible = false;
+            txtVal3.Text = "";
             lblVal4.Visible = false;
             txtVal4.Visible = false;
+            txtVal4.Text = "";
             lblVal5.Visible = false;
             txtVal5.Visible = false;
+            txtVal5.Text = "";
             lblVal6.Visible = false;
             txtVal6.Visible = false;
+            txtVal6.Text = "";
             //cmbCoef.Visible = false;
         }
     }
