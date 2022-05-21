@@ -53,6 +53,7 @@
             this.lblVal1 = new System.Windows.Forms.Label();
             this.txtVal1 = new System.Windows.Forms.TextBox();
             this.btnCalcular = new System.Windows.Forms.Button();
+            this.cmbCoef = new System.Windows.Forms.ComboBox();
             this.tblPrincipal.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).BeginInit();
@@ -227,6 +228,7 @@
             this.tblForm1.Controls.Add(this.lblVal1, 0, 0);
             this.tblForm1.Controls.Add(this.txtVal1, 0, 1);
             this.tblForm1.Controls.Add(this.btnCalcular, 1, 2);
+            this.tblForm1.Controls.Add(this.cmbCoef, 0, 2);
             this.tblForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblForm1.Location = new System.Drawing.Point(3, 199);
             this.tblForm1.Name = "tblForm1";
@@ -242,6 +244,7 @@
             this.txtFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tblForm1.SetColumnSpan(this.txtFinal, 2);
             this.txtFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFinal.ForeColor = System.Drawing.Color.Red;
             this.txtFinal.Location = new System.Drawing.Point(683, 165);
             this.txtFinal.Name = "txtFinal";
             this.txtFinal.Size = new System.Drawing.Size(337, 29);
@@ -414,6 +417,16 @@
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
+            // cmbCoef
+            // 
+            this.cmbCoef.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCoef.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCoef.FormattingEnabled = true;
+            this.cmbCoef.Location = new System.Drawing.Point(3, 169);
+            this.cmbCoef.Name = "cmbCoef";
+            this.cmbCoef.Size = new System.Drawing.Size(164, 32);
+            this.cmbCoef.TabIndex = 23;
+            // 
             // Fisica_II
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +474,7 @@
         private System.Windows.Forms.TextBox txtFinal;
         private System.Windows.Forms.Label lblFinal;
         private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.ComboBox cmbCoef;
     }
 }
 
