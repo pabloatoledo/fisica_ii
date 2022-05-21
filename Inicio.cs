@@ -194,7 +194,7 @@ namespace Fisica_II
 
         private void listaCoeficientes(string subtema, SQLiteConnection conn)
         {
-            if (subtema == "Dilatacion materiales lineal")
+            if (subtema == "Dilatacion materiales lineal" || subtema == "Dilatacion materiales por volumen")
             {
                 SQLiteDataReader sqlite_datareader;
                 SQLiteCommand sqlite_cmd;
@@ -221,7 +221,11 @@ namespace Fisica_II
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
-                var coef = sqlite_datareader.GetValue(2);
+                double coef = sqlite_datareader.GetDouble(2);
+                if (cmbSubtema.Text == "Dilatacion materiales por volumen")
+                {
+                    coef = coef * 3;
+                }
                 txtVal1.Text = coef.ToString();
                 //txtVal1.Enabled = false;
             }
