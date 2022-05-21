@@ -426,6 +426,8 @@
             this.cmbCoef.Name = "cmbCoef";
             this.cmbCoef.Size = new System.Drawing.Size(164, 32);
             this.cmbCoef.TabIndex = 23;
+            this.cmbCoef.Visible = false;
+            this.cmbCoef.SelectedValueChanged += new System.EventHandler(this.actCoef);
             // 
             // Fisica_II
             // 
