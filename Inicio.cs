@@ -14,7 +14,7 @@ namespace Fisica_II
     public partial class Fisica_II : Form
     {
         private int Valores, Formula, contHisto;
-        private double coef;
+        private double coef, TempSustFus, TempSustEvap;
         private string unidad;
         private DataTable dt;     //usada para el datagridview con historicos
 
@@ -29,6 +29,7 @@ namespace Fisica_II
             //DB.InsertData(DB.CreateConnection());       //Inserta la info en la db
             cmbTema.Items.Clear();
             cargaTemas(DB.CreateConnection());
+            cargaFases(DB.CreateConnection());
 
 
             dt = new DataTable();
@@ -52,6 +53,37 @@ namespace Fisica_II
             }
             conn.Close();
             ocultaValores();
+        }
+
+        private void cargaFases(SQLiteConnection conn)
+        {
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT * FROM CalFusVap";
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                string tema = sqlite_datareader.GetString(1);
+                cmbSust.Items.Add(tema);
+            }
+            conn.Close();
+        }
+
+        private void actSustFases(object sender, EventArgs e)
+        {
+            SQLiteConnection conn = DB.CreateConnection();
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT * FROM CalFusVap where Sustancia = '" + cmbSust.SelectedItem.ToString() + "'";
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                TempSustFus = sqlite_datareader.GetDouble(2);
+                TempSustEvap = sqlite_datareader.GetDouble(4);
+            }
+            conn.Close();
         }
 
         private void cargaSubtemas(SQLiteConnection conn)
@@ -283,7 +315,28 @@ namespace Fisica_II
             }
             conn.Close();
         }
-        
+
+        private void faseSust(object sender, EventArgs e)
+        {
+            double tempActual = double.Parse(txtTemp.Text);
+
+            if (tempActual > TempSustEvap)
+            {
+                lblEstado.Text = "Gaseoso";
+            }
+            else
+            {
+                if (tempActual < TempSustFus)
+                {
+                    lblEstado.Text = "Sólido";
+                } 
+                else
+                {
+                    lblEstado.Text = "Líquido";
+                }
+            }
+        }
+
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n;
@@ -472,9 +525,32 @@ namespace Fisica_II
                     dT = Q / (C * n);
                     txtFinal.Text = dT.ToString() + " " + unidad;
                     break;
+
+                case 25:
+                    c = double.Parse(txtVal1.Text);
+                    m = double.Parse(txtVal2.Text);
+                    Q = double.Parse(txtVal3.Text);
+                    T0 = double.Parse(txtVal4.Text);
+                    T = (Q / (m * c)) + T0;
+                    txtFinal.Text = T.ToString() + " " + unidad;
+                    break;
+
+                case 26:
+                    c = double.Parse(txtVal1.Text);
+                    m = double.Parse(txtVal2.Text);
+                    Q = double.Parse(txtVal3.Text);
+                    T = double.Parse(txtVal4.Text);
+                    T0 = T - (Q / (m * c));
+                    txtFinal.Text = T0.ToString() + " " + unidad;
+                    break;
             }
             llenaDataGrid();
             
+        }
+
+        private void tblPrincipal_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void llenaDataGrid()
