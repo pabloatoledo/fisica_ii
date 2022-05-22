@@ -54,10 +54,13 @@
             this.txtVal1 = new System.Windows.Forms.TextBox();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.cmbCoef = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbCoefCal = new System.Windows.Forms.ComboBox();
             this.tblPrincipal.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).BeginInit();
             this.tblForm1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblPrincipal
@@ -227,8 +230,8 @@
             this.tblForm1.Controls.Add(this.lblVal2, 1, 0);
             this.tblForm1.Controls.Add(this.lblVal1, 0, 0);
             this.tblForm1.Controls.Add(this.txtVal1, 0, 1);
-            this.tblForm1.Controls.Add(this.btnCalcular, 1, 2);
-            this.tblForm1.Controls.Add(this.cmbCoef, 0, 2);
+            this.tblForm1.Controls.Add(this.btnCalcular, 0, 2);
+            this.tblForm1.Controls.Add(this.tableLayoutPanel1, 1, 2);
             this.tblForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblForm1.Location = new System.Drawing.Point(3, 199);
             this.tblForm1.Name = "tblForm1";
@@ -409,7 +412,7 @@
             // 
             this.btnCalcular.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(173, 145);
+            this.btnCalcular.Location = new System.Drawing.Point(3, 145);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(164, 70);
             this.btnCalcular.TabIndex = 22;
@@ -422,12 +425,39 @@
             this.cmbCoef.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCoef.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCoef.FormattingEnabled = true;
-            this.cmbCoef.Location = new System.Drawing.Point(3, 169);
+            this.cmbCoef.Location = new System.Drawing.Point(3, 3);
             this.cmbCoef.Name = "cmbCoef";
-            this.cmbCoef.Size = new System.Drawing.Size(164, 32);
+            this.cmbCoef.Size = new System.Drawing.Size(158, 32);
             this.cmbCoef.TabIndex = 23;
             this.cmbCoef.Visible = false;
             this.cmbCoef.SelectedValueChanged += new System.EventHandler(this.actCoef);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.cmbCoefCal, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cmbCoef, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(173, 145);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(164, 70);
+            this.tableLayoutPanel1.TabIndex = 24;
+            // 
+            // cmbCoefCal
+            // 
+            this.cmbCoefCal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCoefCal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCoefCal.FormattingEnabled = true;
+            this.cmbCoefCal.Location = new System.Drawing.Point(3, 38);
+            this.cmbCoefCal.Name = "cmbCoefCal";
+            this.cmbCoefCal.Size = new System.Drawing.Size(158, 32);
+            this.cmbCoefCal.TabIndex = 24;
+            this.cmbCoefCal.Visible = false;
+            this.cmbCoefCal.SelectedValueChanged += new System.EventHandler(this.actCoef);
             // 
             // Fisica_II
             // 
@@ -445,6 +475,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).EndInit();
             this.tblForm1.ResumeLayout(false);
             this.tblForm1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -477,6 +508,8 @@
         private System.Windows.Forms.Label lblFinal;
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.ComboBox cmbCoef;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ComboBox cmbCoefCal;
     }
 }
 

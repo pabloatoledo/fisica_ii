@@ -13,7 +13,7 @@ namespace Fisica_II
 {
     public partial class Fisica_II : Form
     {
-        private int Valores, Formula, contHisto;
+        private int Valores, Formula, contHisto, calorEsp;
         private double coef;
         private string unidad;
         private DataTable dt;     //usada para el datagridview con historicos
@@ -212,6 +212,22 @@ namespace Fisica_II
                 conn.Close();
                 cmbCoef.Visible = true;
             }
+            if (subtema == "Calorimetria sin cambio de fase")
+            {
+                cmbCoef.Items.Clear();
+                SQLiteDataReader sqlite_datareader;
+                SQLiteCommand sqlite_cmd;
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CalorEspecifico";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    string sustancias = sqlite_datareader.GetString(1);
+                    cmbCoefCal.Items.Add(sustancias);
+                }
+                conn.Close();
+                cmbCoefCal.Visible = true;
+            }
         }
 
         private void actCoef(object sender, EventArgs e)
@@ -219,27 +235,43 @@ namespace Fisica_II
             SQLiteConnection conn = DB.CreateConnection();
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
-            sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT * FROM CoefExpLineal where Material = '" + cmbCoef.SelectedItem.ToString() + "'";
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            while (sqlite_datareader.Read())
+
+            if (cmbSubtema.SelectedItem.ToString() == "Dilatacion materiales lineal" || cmbSubtema.SelectedItem.ToString() == "Dilatacion materiales por volumen")
             {
-                
-                double coe = sqlite_datareader.GetDouble(2);
-                coef = coe;
-                if (cmbSubtema.Text == "Dilatacion materiales por volumen")
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CoefExpLineal where Material = '" + cmbCoef.SelectedItem.ToString() + "'";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
                 {
-                    coef = coe * 3;
+
+                    double coe = sqlite_datareader.GetDouble(2);
+                    coef = coe;
+                    if (cmbSubtema.Text == "Dilatacion materiales por volumen")
+                    {
+                        coef = coe * 3;
+                    }
+                    txtVal1.Text = coef.ToString();
                 }
-                txtVal1.Text = coef.ToString();
-                //txtVal1.Enabled = false;
             }
+            
+            if (cmbSubtema.SelectedItem.ToString() == "Calorimetria sin cambio de fase")
+            {
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CalorEspecifico where Sustancia = '" + cmbCoefCal.SelectedItem.ToString() + "'";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    calorEsp = sqlite_datareader.GetInt32(2);
+                    txtVal1.Text = calorEsp.ToString();
+                }
+            }
+                
             conn.Close();
         }
         
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV;
+            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m;
             switch (Formula)
             {
                 case 1:
@@ -279,7 +311,7 @@ namespace Fisica_II
                     break;
 
                 case 7:
-                    a = coef;
+                    a = double.Parse(txtVal1.Text);
                     L0 = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     dL = a * L0 * dT;
@@ -287,7 +319,7 @@ namespace Fisica_II
                     break;
 
                 case 8:
-                    a = coef;
+                    a = double.Parse(txtVal1.Text);
                     L0 = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     L = L0 + (a * L0 * dT);
@@ -295,7 +327,7 @@ namespace Fisica_II
                     break;
 
                 case 9:
-                    a = coef;
+                    a = double.Parse(txtVal1.Text);
                     dL = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     L0 = dL / (a * dT);
@@ -303,7 +335,7 @@ namespace Fisica_II
                     break;
 
                 case 10:
-                    a = coef;
+                    a = double.Parse(txtVal1.Text);
                     dL = double.Parse(txtVal2.Text);
                     L0 = double.Parse(txtVal3.Text);
                     dT = dL / (a * L0);
@@ -311,7 +343,7 @@ namespace Fisica_II
                     break;
 
                 case 11:
-                    a = coef;
+                    a = double.Parse(txtVal1.Text);
                     T0 = double.Parse(txtVal2.Text);
                     dL = double.Parse(txtVal3.Text);
                     L0 = double.Parse(txtVal4.Text);
@@ -320,7 +352,7 @@ namespace Fisica_II
                     break;
 
                 case 12:
-                    a = coef;
+                    a = double.Parse(txtVal1.Text);
                     T = double.Parse(txtVal2.Text);
                     dL = double.Parse(txtVal3.Text);
                     L0 = double.Parse(txtVal4.Text);
@@ -329,7 +361,7 @@ namespace Fisica_II
                     break;
 
                 case 13:
-                    b = coef;
+                    b = double.Parse(txtVal1.Text);
                     V0 = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     dV = b * V0 * dT;
@@ -337,7 +369,7 @@ namespace Fisica_II
                     break;
 
                 case 14:
-                    b = coef;
+                    b = double.Parse(txtVal1.Text);
                     V0 = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     V = V0 + (b * V0 * dT);
@@ -345,7 +377,7 @@ namespace Fisica_II
                     break;
 
                 case 15:
-                    b = coef;
+                    b = double.Parse(txtVal1.Text);
                     dV = double.Parse(txtVal2.Text);
                     dT = double.Parse(txtVal3.Text);
                     V0 = dV / (b * dT);
@@ -353,7 +385,7 @@ namespace Fisica_II
                     break;
 
                 case 16:
-                    b = coef;
+                    b = double.Parse(txtVal1.Text);
                     dV = double.Parse(txtVal2.Text);
                     V0 = double.Parse(txtVal3.Text);
                     dT = dV / (b * V0);
@@ -361,7 +393,7 @@ namespace Fisica_II
                     break;
 
                 case 17:
-                    b = coef;
+                    b = double.Parse(txtVal1.Text);
                     T0 = double.Parse(txtVal2.Text);
                     dV = double.Parse(txtVal3.Text);
                     V0 = double.Parse(txtVal4.Text);
@@ -370,12 +402,36 @@ namespace Fisica_II
                     break;
 
                 case 18:
-                    b = coef;
+                    b = double.Parse(txtVal1.Text);
                     T = double.Parse(txtVal2.Text);
                     dV = double.Parse(txtVal3.Text);
                     V0 = double.Parse(txtVal4.Text);
                     T0 = T - (dV / (b * V0));
                     txtFinal.Text = T0.ToString() + " " + unidad;
+                    break;
+
+                case 19:
+                    c = double.Parse(txtVal1.Text);
+                    m = double.Parse(txtVal2.Text);
+                    dT = double.Parse(txtVal3.Text);
+                    Q = m * c * dT;
+                    txtFinal.Text = Q.ToString() + " " + unidad;
+                    break;
+
+                case 20:
+                    c = double.Parse(txtVal1.Text);
+                    Q = double.Parse(txtVal2.Text);
+                    dT = double.Parse(txtVal3.Text);
+                    m = Q / (c * dT);
+                    txtFinal.Text = m.ToString() + " " + unidad;
+                    break;
+
+                case 21:
+                    c = double.Parse(txtVal1.Text);
+                    Q = double.Parse(txtVal2.Text);
+                    m = double.Parse(txtVal3.Text);
+                    dT = Q / (c * m);
+                    txtFinal.Text = dT.ToString() + " " + unidad;
                     break;
             }
             llenaDataGrid();
