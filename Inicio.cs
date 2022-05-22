@@ -13,7 +13,7 @@ namespace Fisica_II
 {
     public partial class Fisica_II : Form
     {
-        private int Valores, Formula, contHisto, calorEsp;
+        private int Valores, Formula, contHisto;
         private double coef;
         private string unidad;
         private DataTable dt;     //usada para el datagridview con historicos
@@ -256,22 +256,37 @@ namespace Fisica_II
             
             if (cmbSubtema.SelectedItem.ToString() == "Calorimetria sin cambio de fase")
             {
-                sqlite_cmd = conn.CreateCommand();
-                sqlite_cmd.CommandText = "SELECT * FROM CalorEspecifico where Sustancia = '" + cmbCoefCal.SelectedItem.ToString() + "'";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                double calorEsp;
+
+                if (cmbFormula.SelectedItem.ToString() == "Q = n.C.dT" || cmbFormula.SelectedItem.ToString() == "n = Q / (C.dT)" || cmbFormula.SelectedItem.ToString() == "dT = Q / (n.C)")
                 {
-                    calorEsp = sqlite_datareader.GetInt32(2);
-                    txtVal1.Text = calorEsp.ToString();
+                    sqlite_cmd = conn.CreateCommand();
+                    sqlite_cmd.CommandText = "SELECT * FROM CalorEspecifico where Sustancia = '" + cmbCoefCal.SelectedItem.ToString() + "'";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        calorEsp = sqlite_datareader.GetDouble(4);
+                        txtVal1.Text = calorEsp.ToString();
+                    }
+                }
+                else
+                {
+                    sqlite_cmd = conn.CreateCommand();
+                    sqlite_cmd.CommandText = "SELECT * FROM CalorEspecifico where Sustancia = '" + cmbCoefCal.SelectedItem.ToString() + "'";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        calorEsp = sqlite_datareader.GetDouble(2);
+                        txtVal1.Text = calorEsp.ToString();
+                    }
                 }
             }
-                
             conn.Close();
         }
         
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m;
+            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n;
             switch (Formula)
             {
                 case 1:
@@ -431,6 +446,30 @@ namespace Fisica_II
                     Q = double.Parse(txtVal2.Text);
                     m = double.Parse(txtVal3.Text);
                     dT = Q / (c * m);
+                    txtFinal.Text = dT.ToString() + " " + unidad;
+                    break;
+
+                case 22:
+                    C = double.Parse(txtVal1.Text);
+                    n = double.Parse(txtVal2.Text);
+                    dT = double.Parse(txtVal3.Text);
+                    Q = n * C * dT;
+                    txtFinal.Text = Q.ToString() + " " + unidad;
+                    break;
+
+                case 23:
+                    C = double.Parse(txtVal1.Text);
+                    Q = double.Parse(txtVal2.Text);
+                    dT = double.Parse(txtVal3.Text);
+                    n = Q / (C * dT);
+                    txtFinal.Text = n.ToString() + " " + unidad;
+                    break;
+
+                case 24:
+                    C = double.Parse(txtVal1.Text);
+                    Q = double.Parse(txtVal2.Text);
+                    n = double.Parse(txtVal3.Text);
+                    dT = Q / (C * n);
                     txtFinal.Text = dT.ToString() + " " + unidad;
                     break;
             }
