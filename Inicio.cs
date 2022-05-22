@@ -228,11 +228,13 @@ namespace Fisica_II
 
         private void listaCoeficientes(string subtema, SQLiteConnection conn)
         {
+            cmbCoef.Items.Clear();
+            cmbCoefCal.Items.Clear();
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+
             if (subtema == "Dilatacion materiales lineal" || subtema == "Dilatacion materiales por volumen")
             {
-                cmbCoef.Items.Clear();
-                SQLiteDataReader sqlite_datareader;
-                SQLiteCommand sqlite_cmd;
                 sqlite_cmd = conn.CreateCommand();
                 sqlite_cmd.CommandText = "SELECT * FROM CoefExpLineal";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -246,11 +248,21 @@ namespace Fisica_II
             }
             if (subtema == "Calorimetria sin cambio de fase")
             {
-                cmbCoef.Items.Clear();
-                SQLiteDataReader sqlite_datareader;
-                SQLiteCommand sqlite_cmd;
                 sqlite_cmd = conn.CreateCommand();
                 sqlite_cmd.CommandText = "SELECT * FROM CalorEspecifico";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    string sustancias = sqlite_datareader.GetString(1);
+                    cmbCoefCal.Items.Add(sustancias);
+                }
+                conn.Close();
+                cmbCoefCal.Visible = true;
+            }
+            if (subtema == "Calorimetria con cambio de fase")
+            {
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CalFusVap";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
@@ -313,33 +325,63 @@ namespace Fisica_II
                     }
                 }
             }
+
+            if (cmbFormula.SelectedItem.ToString() == "Q = m.L (fusion)" || cmbFormula.SelectedItem.ToString() == "Q = - (m.L) (fusion)")
+            {
+
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CalFusVap where Sustancia = '" + cmbCoefCal.SelectedItem.ToString() + "'";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    double Lf = sqlite_datareader.GetDouble(3);
+                    txtVal1.Text = Lf.ToString();
+                }
+            }
+
+            if (cmbFormula.SelectedItem.ToString() == "Q = m.L (ebullicion)" || cmbFormula.SelectedItem.ToString() == "Q = - (m.L) (ebullicion)")
+            {
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CalFusVap where Sustancia = '" + cmbCoefCal.SelectedItem.ToString() + "'";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    double Lv = sqlite_datareader.GetDouble(5);
+                    txtVal1.Text = Lv.ToString();
+                }
+            }
+
             conn.Close();
         }
 
         private void faseSust(object sender, EventArgs e)
         {
-            double tempActual = double.Parse(txtTemp.Text);
-
-            if (tempActual > TempSustEvap)
+            try
             {
-                lblEstado.Text = "Gaseoso";
-            }
-            else
-            {
-                if (tempActual < TempSustFus)
+                double tempActual = double.Parse(txtTemp.Text);            
+                if (tempActual >= TempSustEvap)
                 {
-                    lblEstado.Text = "Sólido";
-                } 
+                    lblEstado.Text = "Gaseoso";
+                }
                 else
                 {
-                    lblEstado.Text = "Líquido";
+                    if (tempActual < TempSustFus)
+                    {
+                        lblEstado.Text = "Sólido";
+                    }
+                    else
+                    {
+                        lblEstado.Text = "Líquido";
+                    }
                 }
             }
+            catch
+            {}
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n;
+            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n, Q1, Q2;
             switch (Formula)
             {
                 case 1:
@@ -543,14 +585,51 @@ namespace Fisica_II
                     T0 = T - (Q / (m * c));
                     txtFinal.Text = T0.ToString() + " " + unidad;
                     break;
+
+                case 27:
+                    L = double.Parse(txtVal1.Text);
+                    m = double.Parse(txtVal2.Text);
+                    Q = m * L;
+                    txtFinal.Text = Q.ToString() + " " + unidad;
+                    break;
+
+                case 28:
+                    L = double.Parse(txtVal1.Text);
+                    m = double.Parse(txtVal2.Text);
+                    Q = -1 * (m * L);
+                    txtFinal.Text = Q.ToString() + " " + unidad;
+                    break;
+
+                case 29:
+                    L = double.Parse(txtVal1.Text);
+                    m = double.Parse(txtVal2.Text);
+                    Q = m * L;
+                    txtFinal.Text = Q.ToString() + " " + unidad;
+                    break;
+
+                case 30:
+                    L = double.Parse(txtVal1.Text);
+                    m = double.Parse(txtVal2.Text);
+                    Q = -1 * (m * L);
+                    txtFinal.Text = Q.ToString() + " " + unidad;
+                    break;
+
+                case 31:
+                    Q1 = double.Parse(txtVal1.Text);
+                    Q2 = double.Parse(txtVal2.Text);
+                    Q = Q1 + Q2;
+                    txtFinal.Text = Q.ToString() + " " + unidad;
+                    break;
+
+                case 32:
+                    Q = double.Parse(txtVal1.Text);
+                    Q1 = double.Parse(txtVal2.Text);
+                    Q2 = Q - Q1;
+                    txtFinal.Text = Q2.ToString() + " " + unidad;
+                    break;
             }
             llenaDataGrid();
             
-        }
-
-        private void tblPrincipal_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void llenaDataGrid()

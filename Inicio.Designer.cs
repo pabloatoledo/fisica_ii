@@ -89,7 +89,7 @@
             this.tblPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tblPrincipal.Size = new System.Drawing.Size(1201, 574);
             this.tblPrincipal.TabIndex = 0;
-            this.tblPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.tblPrincipal_Paint);
+            //this.tblPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.tblPrincipal_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -578,7 +578,6 @@
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(230, 46);
             this.lblEstado.TabIndex = 5;
-            this.lblEstado.Text = "Estado";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Fisica_II
