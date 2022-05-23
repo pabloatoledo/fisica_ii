@@ -272,6 +272,20 @@ namespace Fisica_II
                 conn.Close();
                 cmbCoefCal.Visible = true;
             }
+
+            if (subtema == "Conduccion de calor") 
+            {
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CondTermicas";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    string sustancias = sqlite_datareader.GetString(1);
+                    cmbCoefCal.Items.Add(sustancias);
+                }
+                conn.Close();
+                cmbCoefCal.Visible = true;
+            }
         }
 
         private void actCoef(object sender, EventArgs e)
@@ -351,6 +365,18 @@ namespace Fisica_II
                 }
             }
 
+            if (cmbSubtema.SelectedItem.ToString() == "Conduccion de calor")
+            {
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM CondTermicas where Sustancia = '" + cmbCoefCal.SelectedItem.ToString() + "'";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    double k = sqlite_datareader.GetDouble(2);
+                    txtVal1.Text = k.ToString();
+                }
+            }
+
             conn.Close();
         }
 
@@ -381,7 +407,7 @@ namespace Fisica_II
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n, Q1, Q2;
+            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n, Q1, Q2, H, dQ, k, A, Th;
             switch (Formula)
             {
                 case 1:
@@ -626,6 +652,53 @@ namespace Fisica_II
                     Q1 = double.Parse(txtVal2.Text);
                     Q2 = Q - Q1;
                     txtFinal.Text = Q2.ToString() + " " + unidad;
+                    break;
+
+                case 33:
+                    dQ = double.Parse(txtVal1.Text);
+                    dT = double.Parse(txtVal2.Text);
+                    H = dQ + dT;
+                    txtFinal.Text = H.ToString() + " " + unidad;
+                    break;
+
+                case 34:
+                    k = double.Parse(txtVal1.Text);
+                    A = double.Parse(txtVal2.Text);
+                    Th = double.Parse(txtVal3.Text);
+                    Tc = double.Parse(txtVal4.Text);
+                    L = double.Parse(txtVal5.Text);
+                    H = k * A * ((Th - Tc) / L);
+                    txtFinal.Text = H.ToString() + " " + unidad;
+                    break;
+
+                case 35:
+                    k = double.Parse(txtVal1.Text);
+                    H = double.Parse(txtVal2.Text);
+                    Th = double.Parse(txtVal3.Text);
+                    Tc = double.Parse(txtVal4.Text);
+                    L = double.Parse(txtVal5.Text);
+                    A = H / (k * (Th - Tc) / L);
+                    txtFinal.Text = A.ToString() + " " + unidad;
+                    break;
+
+                case 36:
+                    k = double.Parse(txtVal1.Text);
+                    H = double.Parse(txtVal2.Text);
+                    L = double.Parse(txtVal3.Text);
+                    A = double.Parse(txtVal4.Text);
+                    Tc = double.Parse(txtVal5.Text);
+                    Th = ((H * L) / (k * A)) + Tc;
+                    txtFinal.Text = Th.ToString() + " " + unidad;
+                    break;
+
+                case 37:
+                    k = double.Parse(txtVal1.Text);
+                    H = double.Parse(txtVal2.Text);
+                    L = double.Parse(txtVal3.Text);
+                    A = double.Parse(txtVal4.Text);
+                    Th = double.Parse(txtVal5.Text);
+                    Tc = Th - ((H * L) / (k * A));
+                    txtFinal.Text = Tc.ToString() + " " + unidad;
                     break;
             }
             llenaDataGrid();
