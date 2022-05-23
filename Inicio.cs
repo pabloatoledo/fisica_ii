@@ -407,7 +407,7 @@ namespace Fisica_II
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n, Q1, Q2, H, dQ, k, A, Th, em;
+            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n, Q1, Q2, H, dQ, k, A, Th, em, _x, _A, _k, _w;
             double o = 0.000000056704;
 
             switch (Formula)
@@ -733,6 +733,15 @@ namespace Fisica_II
                     em = double.Parse(txtVal3.Text);
                     T = Math.Sqrt(Math.Sqrt(H / (A * o * em)));
                     txtFinal.Text = T.ToString() + " " + unidad;
+                    break;
+
+                case 42:
+                    _x = double.Parse(txtVal1.Text);
+                    _A = double.Parse(txtVal2.Text);
+                    _k = double.Parse(txtVal3.Text);
+                    _w = double.Parse(txtVal3.Text);
+                    Ondas ondas = new Ondas(_x, _A, _k, _w);
+                    ondas.Show();
                     break;
             }
             llenaDataGrid();
