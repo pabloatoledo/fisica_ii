@@ -36,7 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTema = new System.Windows.Forms.ComboBox();
-            this.dgvAnteriores = new System.Windows.Forms.DataGridView();
             this.tblForm1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtFinal = new System.Windows.Forms.TextBox();
             this.lblFinal = new System.Windows.Forms.Label();
@@ -57,19 +56,27 @@
             this.cmbCoefCal = new System.Windows.Forms.ComboBox();
             this.cmbCoef = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvAnteriores = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.cmbSust = new System.Windows.Forms.ComboBox();
             this.txtTemp = new System.Windows.Forms.TextBox();
-            this.lblEstado = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbConv1 = new System.Windows.Forms.ComboBox();
+            this.cmbConv2 = new System.Windows.Forms.ComboBox();
+            this.cmbConv3 = new System.Windows.Forms.ComboBox();
+            this.cmbConv4 = new System.Windows.Forms.ComboBox();
+            this.cmbConv5 = new System.Windows.Forms.ComboBox();
+            this.cmbConv6 = new System.Windows.Forms.ComboBox();
             this.tblPrincipal.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).BeginInit();
             this.tblForm1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +96,6 @@
             this.tblPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tblPrincipal.Size = new System.Drawing.Size(1201, 574);
             this.tblPrincipal.TabIndex = 0;
-            //this.tblPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.tblPrincipal_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -202,17 +208,6 @@
             this.cmbTema.TabIndex = 1;
             this.cmbTema.SelectedIndexChanged += new System.EventHandler(this.actSubtemas);
             // 
-            // dgvAnteriores
-            // 
-            this.dgvAnteriores.AllowUserToAddRows = false;
-            this.dgvAnteriores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnteriores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAnteriores.Location = new System.Drawing.Point(3, 3);
-            this.dgvAnteriores.Name = "dgvAnteriores";
-            this.dgvAnteriores.ReadOnly = true;
-            this.dgvAnteriores.Size = new System.Drawing.Size(392, 132);
-            this.dgvAnteriores.TabIndex = 1;
-            // 
             // tblForm1
             // 
             this.tblForm1.ColumnCount = 6;
@@ -222,12 +217,8 @@
             this.tblForm1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.665F));
             this.tblForm1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.665F));
             this.tblForm1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.675F));
-            this.tblForm1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblForm1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblForm1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblForm1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblForm1.Controls.Add(this.txtFinal, 4, 2);
-            this.tblForm1.Controls.Add(this.lblFinal, 3, 2);
+            this.tblForm1.Controls.Add(this.txtFinal, 4, 3);
+            this.tblForm1.Controls.Add(this.lblFinal, 3, 3);
             this.tblForm1.Controls.Add(this.txtVal6, 5, 1);
             this.tblForm1.Controls.Add(this.txtVal5, 4, 1);
             this.tblForm1.Controls.Add(this.txtVal4, 3, 1);
@@ -240,14 +231,21 @@
             this.tblForm1.Controls.Add(this.lblVal2, 1, 0);
             this.tblForm1.Controls.Add(this.lblVal1, 0, 0);
             this.tblForm1.Controls.Add(this.txtVal1, 0, 1);
-            this.tblForm1.Controls.Add(this.btnCalcular, 0, 2);
-            this.tblForm1.Controls.Add(this.tableLayoutPanel1, 1, 2);
+            this.tblForm1.Controls.Add(this.btnCalcular, 0, 3);
+            this.tblForm1.Controls.Add(this.tableLayoutPanel1, 1, 3);
+            this.tblForm1.Controls.Add(this.cmbConv1, 0, 2);
+            this.tblForm1.Controls.Add(this.cmbConv2, 1, 2);
+            this.tblForm1.Controls.Add(this.cmbConv3, 2, 2);
+            this.tblForm1.Controls.Add(this.cmbConv4, 3, 2);
+            this.tblForm1.Controls.Add(this.cmbConv5, 4, 2);
+            this.tblForm1.Controls.Add(this.cmbConv6, 5, 2);
             this.tblForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblForm1.Location = new System.Drawing.Point(3, 146);
             this.tblForm1.Name = "tblForm1";
-            this.tblForm1.RowCount = 3;
+            this.tblForm1.RowCount = 4;
             this.tblForm1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tblForm1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tblForm1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblForm1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13F));
             this.tblForm1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
             this.tblForm1.Size = new System.Drawing.Size(1195, 281);
             this.tblForm1.TabIndex = 2;
@@ -263,7 +261,6 @@
             this.txtFinal.Size = new System.Drawing.Size(393, 29);
             this.txtFinal.TabIndex = 21;
             this.txtFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtFinal.Visible = false;
             // 
             // lblFinal
             // 
@@ -277,13 +274,12 @@
             this.lblFinal.TabIndex = 20;
             this.lblFinal.Text = "Resultado";
             this.lblFinal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblFinal.Visible = false;
             // 
             // txtVal6
             // 
             this.txtVal6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVal6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVal6.Location = new System.Drawing.Point(998, 123);
+            this.txtVal6.Location = new System.Drawing.Point(998, 105);
             this.txtVal6.Name = "txtVal6";
             this.txtVal6.Size = new System.Drawing.Size(194, 29);
             this.txtVal6.TabIndex = 15;
@@ -293,7 +289,7 @@
             // 
             this.txtVal5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVal5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVal5.Location = new System.Drawing.Point(799, 123);
+            this.txtVal5.Location = new System.Drawing.Point(799, 105);
             this.txtVal5.Name = "txtVal5";
             this.txtVal5.Size = new System.Drawing.Size(193, 29);
             this.txtVal5.TabIndex = 14;
@@ -303,7 +299,7 @@
             // 
             this.txtVal4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVal4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVal4.Location = new System.Drawing.Point(600, 123);
+            this.txtVal4.Location = new System.Drawing.Point(600, 105);
             this.txtVal4.Name = "txtVal4";
             this.txtVal4.Size = new System.Drawing.Size(193, 29);
             this.txtVal4.TabIndex = 13;
@@ -313,7 +309,7 @@
             // 
             this.txtVal3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVal3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVal3.Location = new System.Drawing.Point(401, 123);
+            this.txtVal3.Location = new System.Drawing.Point(401, 105);
             this.txtVal3.Name = "txtVal3";
             this.txtVal3.Size = new System.Drawing.Size(193, 29);
             this.txtVal3.TabIndex = 12;
@@ -323,7 +319,7 @@
             // 
             this.txtVal2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVal2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVal2.Location = new System.Drawing.Point(202, 123);
+            this.txtVal2.Location = new System.Drawing.Point(202, 105);
             this.txtVal2.Name = "txtVal2";
             this.txtVal2.Size = new System.Drawing.Size(193, 29);
             this.txtVal2.TabIndex = 11;
@@ -412,7 +408,7 @@
             this.txtVal1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVal1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVal1.Location = new System.Drawing.Point(3, 123);
+            this.txtVal1.Location = new System.Drawing.Point(3, 105);
             this.txtVal1.Name = "txtVal1";
             this.txtVal1.Size = new System.Drawing.Size(193, 29);
             this.txtVal1.TabIndex = 10;
@@ -478,6 +474,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
             this.tableLayoutPanel3.Controls.Add(this.dgvAnteriores, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 433);
@@ -487,6 +484,17 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1195, 138);
             this.tableLayoutPanel3.TabIndex = 3;
+            // 
+            // dgvAnteriores
+            // 
+            this.dgvAnteriores.AllowUserToAddRows = false;
+            this.dgvAnteriores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAnteriores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAnteriores.Location = new System.Drawing.Point(3, 3);
+            this.dgvAnteriores.Name = "dgvAnteriores";
+            this.dgvAnteriores.ReadOnly = true;
+            this.dgvAnteriores.Size = new System.Drawing.Size(392, 132);
+            this.dgvAnteriores.TabIndex = 1;
             // 
             // tableLayoutPanel4
             // 
@@ -509,18 +517,30 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(392, 132);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
-            // label4
+            // lblEstado
             // 
-            this.label4.AutoSize = true;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 43);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Sustancia";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.ForeColor = System.Drawing.Color.Red;
+            this.lblEstado.Location = new System.Drawing.Point(159, 86);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(230, 46);
+            this.lblEstado.TabIndex = 5;
+            this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 86);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(150, 46);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Estado";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -535,18 +555,18 @@
             this.label5.Text = "Temp. actual en ºC";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 86);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 46);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Estado";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.AutoSize = true;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(150, 43);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Sustancia";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmbSust
             // 
@@ -568,17 +588,76 @@
             this.txtTemp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTemp.TextChanged += new System.EventHandler(this.faseSust);
             // 
-            // lblEstado
+            // tableLayoutPanel5
             // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.ForeColor = System.Drawing.Color.Red;
-            this.lblEstado.Location = new System.Drawing.Point(159, 86);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(230, 46);
-            this.lblEstado.TabIndex = 5;
-            this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(799, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 132);
+            this.tableLayoutPanel5.TabIndex = 3;
+            // 
+            // cmbConv1
+            // 
+            this.cmbConv1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv1.FormattingEnabled = true;
+            this.cmbConv1.Location = new System.Drawing.Point(3, 155);
+            this.cmbConv1.Name = "cmbConv1";
+            this.cmbConv1.Size = new System.Drawing.Size(193, 21);
+            this.cmbConv1.TabIndex = 25;
+            // 
+            // cmbConv2
+            // 
+            this.cmbConv2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv2.FormattingEnabled = true;
+            this.cmbConv2.Location = new System.Drawing.Point(202, 155);
+            this.cmbConv2.Name = "cmbConv2";
+            this.cmbConv2.Size = new System.Drawing.Size(193, 21);
+            this.cmbConv2.TabIndex = 26;
+            this.cmbConv2.SelectedValueChanged += new System.EventHandler(this.convVal2);
+            // 
+            // cmbConv3
+            // 
+            this.cmbConv3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv3.FormattingEnabled = true;
+            this.cmbConv3.Location = new System.Drawing.Point(401, 155);
+            this.cmbConv3.Name = "cmbConv3";
+            this.cmbConv3.Size = new System.Drawing.Size(193, 21);
+            this.cmbConv3.TabIndex = 27;
+            // 
+            // cmbConv4
+            // 
+            this.cmbConv4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv4.FormattingEnabled = true;
+            this.cmbConv4.Location = new System.Drawing.Point(600, 155);
+            this.cmbConv4.Name = "cmbConv4";
+            this.cmbConv4.Size = new System.Drawing.Size(193, 21);
+            this.cmbConv4.TabIndex = 28;
+            // 
+            // cmbConv5
+            // 
+            this.cmbConv5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv5.FormattingEnabled = true;
+            this.cmbConv5.Location = new System.Drawing.Point(799, 155);
+            this.cmbConv5.Name = "cmbConv5";
+            this.cmbConv5.Size = new System.Drawing.Size(193, 21);
+            this.cmbConv5.TabIndex = 29;
+            // 
+            // cmbConv6
+            // 
+            this.cmbConv6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv6.FormattingEnabled = true;
+            this.cmbConv6.Location = new System.Drawing.Point(998, 155);
+            this.cmbConv6.Name = "cmbConv6";
+            this.cmbConv6.Size = new System.Drawing.Size(194, 21);
+            this.cmbConv6.TabIndex = 30;
             // 
             // Fisica_II
             // 
@@ -589,15 +668,16 @@
             this.Name = "Fisica_II";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fisica_II";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Fisica_II_Load);
             this.tblPrincipal.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).EndInit();
             this.tblForm1.ResumeLayout(false);
             this.tblForm1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnteriores)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
@@ -642,6 +722,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbSust;
         private System.Windows.Forms.TextBox txtTemp;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.ComboBox cmbConv1;
+        private System.Windows.Forms.ComboBox cmbConv2;
+        private System.Windows.Forms.ComboBox cmbConv3;
+        private System.Windows.Forms.ComboBox cmbConv4;
+        private System.Windows.Forms.ComboBox cmbConv5;
+        private System.Windows.Forms.ComboBox cmbConv6;
     }
 }
 

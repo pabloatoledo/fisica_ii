@@ -15,7 +15,7 @@ namespace Fisica_II
     {
         private int Valores, Formula, contHisto;
         private double coef, TempSustFus, TempSustEvap;
-        private string unidad;
+        private string unidad, cmbVal1, cmbVal2, cmbVal3, cmbVal4, cmbVal5;
         private DataTable dt;     //usada para el datagridview con historicos
 
         public Fisica_II()
@@ -144,6 +144,7 @@ namespace Fisica_II
                 case 1:
                     lblVal1.Visible = true;
                     txtVal1.Visible = true;
+                    cmbConv1.Visible = true;
                     break;
 
                 case 2:
@@ -151,6 +152,7 @@ namespace Fisica_II
                     txtVal1.Visible = true;
                     lblVal2.Visible = true;
                     txtVal2.Visible = true;
+                    showcmbVal2();
                     break;
 
                 case 3:
@@ -160,7 +162,10 @@ namespace Fisica_II
                     txtVal2.Visible = true;
                     lblVal3.Visible = true;
                     txtVal3.Visible = true;
+                    showcmbVal2();
                     break;
+                    
+
 
                 case 4:
                     lblVal1.Visible = true;
@@ -171,6 +176,7 @@ namespace Fisica_II
                     txtVal3.Visible = true;
                     lblVal4.Visible = true;
                     txtVal4.Visible = true;
+                    showcmbVal2();
                     break;
 
                 case 5:
@@ -184,6 +190,7 @@ namespace Fisica_II
                     txtVal4.Visible = true;
                     lblVal5.Visible = true;
                     txtVal5.Visible = true;
+                    showcmbVal2();
                     break;
 
                 case 6:
@@ -202,6 +209,8 @@ namespace Fisica_II
                     break;
             }
         }
+
+        
 
         private void consValores(SQLiteConnection conn)
         {
@@ -762,23 +771,164 @@ namespace Fisica_II
         {
             lblVal1.Visible = false;
             txtVal1.Visible = false;
+            cmbConv1.Visible = false;
             txtVal1.Text = "";
             lblVal2.Visible = false;
             txtVal2.Visible = false;
+            cmbConv2.Visible = false;
             txtVal2.Text = "";
             lblVal3.Visible = false;
             txtVal3.Visible = false;
+            cmbConv3.Visible = false;
             txtVal3.Text = "";
             lblVal4.Visible = false;
             txtVal4.Visible = false;
+            cmbConv4.Visible = false;
             txtVal4.Text = "";
             lblVal5.Visible = false;
             txtVal5.Visible = false;
+            cmbConv5.Visible = false;
             txtVal5.Text = "";
             lblVal6.Visible = false;
             txtVal6.Visible = false;
+            cmbConv6.Visible = false;
             txtVal6.Text = "";
             //cmbCoef.Visible = false;
+        }
+
+        //------------------- cmb conversores ----------------------------
+
+        private void showcmbVal2()
+        {
+            if (lblVal2.Text == "L0 (en m)" || lblVal2.Text == "dL (en m)")
+            {
+                cmbConv2.Visible = true;
+                cmbConv2.Items.Clear();
+                cmbConv2.Items.Add("m");
+                cmbConv2.Items.Add("mm");
+                cmbConv2.Items.Add("km");
+                cmbVal2 = "longitud";
+            }
+            if (lblVal2.Text == "T0 (en ºC)" || lblVal2.Text == "T (en ºC)")
+            {
+                cmbConv2.Visible = true;
+                cmbConv2.Items.Clear();
+                cmbConv2.Items.Add("ºC");
+                cmbConv2.Items.Add("K");
+                cmbConv2.Items.Add("ºF");
+                cmbVal2 = "temperatura";
+            }
+            if (lblVal2.Text == "V0 (en m3)")
+            {
+                cmbConv2.Visible = true;
+                cmbConv2.Items.Clear();
+                cmbConv2.Items.Add("m3");
+                cmbConv2.Items.Add("cm3");
+                cmbVal2 = "volumen";
+            }
+            if (lblVal2.Text == "m (en kg)")
+            {
+                cmbConv2.Visible = true;
+                cmbConv2.Items.Clear();
+                cmbConv2.Items.Add("kg");
+                cmbConv2.Items.Add("g");
+                cmbConv2.Items.Add("mg");
+                cmbVal2 = "masa";
+            }
+            if (lblVal2.Text == "Q (en J)")
+            {
+                cmbConv2.Visible = true;
+                cmbConv2.Items.Clear();
+                cmbConv2.Items.Add("J");
+                cmbConv2.Items.Add("cal");
+                cmbConv2.Items.Add("kcal");
+                cmbConv2.Items.Add("Btu");
+                cmbVal2 = "calor";
+            }
+            if (lblVal2.Text == "A (en m2)")
+            {
+                cmbConv2.Visible = true;
+                cmbConv2.Items.Clear();
+                cmbConv2.Items.Add("m2");
+                cmbConv2.Items.Add("cm2");
+                cmbConv2.Items.Add("km2");
+                cmbVal2 = "superficie";
+            }
+        }
+
+        private void convVal2(object sender, EventArgs e)
+        {
+            if (cmbVal2 == "longitud")
+            {
+                if(cmbConv2.SelectedItem.ToString()=="mm")
+                {
+                    txtVal2.Text = mmTom(double.Parse(txtVal2.Text)).ToString();
+                }
+                if (cmbConv2.SelectedItem.ToString() == "km")
+                {
+                    txtVal2.Text = kmTom(double.Parse(txtVal2.Text)).ToString();
+                }
+            }
+            if (cmbVal2 == "temperatura")
+            {
+                if (cmbConv2.SelectedItem.ToString() == "K")
+                {
+                    txtVal2.Text = kToc(double.Parse(txtVal2.Text)).ToString();
+                }
+                if (cmbConv2.SelectedItem.ToString() == "ºF")
+                {
+                    txtVal2.Text = fToc(double.Parse(txtVal2.Text)).ToString();
+                }
+            }
+            if (cmbVal2 == "masa")
+            {
+                if (cmbConv2.SelectedItem.ToString() == "mg")
+                {
+                    txtVal2.Text = mgTokg(double.Parse(txtVal2.Text)).ToString();
+                }
+                if (cmbConv2.SelectedItem.ToString() == "g")
+                {
+                    txtVal2.Text = gTokg(double.Parse(txtVal2.Text)).ToString();
+                }
+            }
+        }
+
+        //------------------- conversiones -------------------------------
+
+        private double mmTom (double mm)
+        {
+            double m = mm / 1000;
+            return m;
+        }
+
+        private double kmTom (double km)
+        {
+            double m = km * 1000;
+            return m;
+        }
+
+        private double kToc (double k)
+        {
+            double c = k - 273.15;
+            return c;
+        }
+
+        private double fToc(double f)
+        {
+            double c = (5.0 / 9.0) * (f - 32);
+            return c;
+        }
+
+        private double mgTokg(double mg)
+        {
+            double kg = mg / 1000000;
+            return kg;
+        }
+
+        private double gTokg(double g)
+        {
+            double kg = g / 1000;
+            return kg;
         }
     }
 }
