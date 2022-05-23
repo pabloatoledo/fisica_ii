@@ -407,7 +407,9 @@ namespace Fisica_II
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n, Q1, Q2, H, dQ, k, A, Th;
+            double Tk, Tf, Tc, dL, a, L0, dT, L, T0, T, b, V0, V, dV, c, Q, m, C, n, Q1, Q2, H, dQ, k, A, Th, em;
+            double o = 0.000000056704;
+
             switch (Formula)
             {
                 case 1:
@@ -699,6 +701,38 @@ namespace Fisica_II
                     Th = double.Parse(txtVal5.Text);
                     Tc = Th - ((H * L) / (k * A));
                     txtFinal.Text = Tc.ToString() + " " + unidad;
+                    break;
+
+                case 38:
+                    A = double.Parse(txtVal1.Text);
+                    em = double.Parse(txtVal2.Text);
+                    T = double.Parse(txtVal3.Text);
+                    H = A * em * o * Math.Pow(T, 4);
+                    txtFinal.Text = H.ToString() + " " + unidad;
+                    break;
+
+                case 39:
+                    H = double.Parse(txtVal1.Text);
+                    em = double.Parse(txtVal2.Text);
+                    T = double.Parse(txtVal3.Text);
+                    A = H / (em * o * Math.Pow(T, 4));
+                    txtFinal.Text = A.ToString() + " " + unidad;
+                    break;
+
+                case 40:
+                    H = double.Parse(txtVal1.Text);
+                    A = double.Parse(txtVal2.Text);
+                    T = double.Parse(txtVal3.Text);
+                    em = H / (A * o * Math.Pow(T, 4));
+                    txtFinal.Text = em.ToString() + " " + unidad;
+                    break;
+
+                case 41:
+                    H = double.Parse(txtVal1.Text);
+                    A = double.Parse(txtVal2.Text);
+                    em = double.Parse(txtVal3.Text);
+                    T = Math.Sqrt(Math.Sqrt(H / (A * o * em)));
+                    txtFinal.Text = T.ToString() + " " + unidad;
                     break;
             }
             llenaDataGrid();
