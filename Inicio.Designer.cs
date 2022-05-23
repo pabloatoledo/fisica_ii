@@ -55,6 +55,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbCoefCal = new System.Windows.Forms.ComboBox();
             this.cmbCoef = new System.Windows.Forms.ComboBox();
+            this.cmbConv1 = new System.Windows.Forms.ComboBox();
+            this.cmbConv2 = new System.Windows.Forms.ComboBox();
+            this.cmbConv3 = new System.Windows.Forms.ComboBox();
+            this.cmbConv4 = new System.Windows.Forms.ComboBox();
+            this.cmbConv5 = new System.Windows.Forms.ComboBox();
+            this.cmbConv6 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAnteriores = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -64,13 +70,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbSust = new System.Windows.Forms.ComboBox();
             this.txtTemp = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmbConv1 = new System.Windows.Forms.ComboBox();
-            this.cmbConv2 = new System.Windows.Forms.ComboBox();
-            this.cmbConv3 = new System.Windows.Forms.ComboBox();
-            this.cmbConv4 = new System.Windows.Forms.ComboBox();
-            this.cmbConv5 = new System.Windows.Forms.ComboBox();
-            this.cmbConv6 = new System.Windows.Forms.ComboBox();
             this.tblPrincipal.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tblForm1.SuspendLayout();
@@ -466,6 +465,67 @@
             this.cmbCoef.Visible = false;
             this.cmbCoef.SelectedValueChanged += new System.EventHandler(this.actCoef);
             // 
+            // cmbConv1
+            // 
+            this.cmbConv1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConv1.FormattingEnabled = true;
+            this.cmbConv1.Location = new System.Drawing.Point(3, 151);
+            this.cmbConv1.Name = "cmbConv1";
+            this.cmbConv1.Size = new System.Drawing.Size(193, 32);
+            this.cmbConv1.TabIndex = 25;
+            // 
+            // cmbConv2
+            // 
+            this.cmbConv2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConv2.FormattingEnabled = true;
+            this.cmbConv2.Location = new System.Drawing.Point(202, 151);
+            this.cmbConv2.Name = "cmbConv2";
+            this.cmbConv2.Size = new System.Drawing.Size(193, 32);
+            this.cmbConv2.TabIndex = 26;
+            this.cmbConv2.SelectedValueChanged += new System.EventHandler(this.convVal2);
+            // 
+            // cmbConv3
+            // 
+            this.cmbConv3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConv3.FormattingEnabled = true;
+            this.cmbConv3.Location = new System.Drawing.Point(401, 151);
+            this.cmbConv3.Name = "cmbConv3";
+            this.cmbConv3.Size = new System.Drawing.Size(193, 32);
+            this.cmbConv3.TabIndex = 27;
+            // 
+            // cmbConv4
+            // 
+            this.cmbConv4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConv4.FormattingEnabled = true;
+            this.cmbConv4.Location = new System.Drawing.Point(600, 151);
+            this.cmbConv4.Name = "cmbConv4";
+            this.cmbConv4.Size = new System.Drawing.Size(193, 32);
+            this.cmbConv4.TabIndex = 28;
+            // 
+            // cmbConv5
+            // 
+            this.cmbConv5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConv5.FormattingEnabled = true;
+            this.cmbConv5.Location = new System.Drawing.Point(799, 151);
+            this.cmbConv5.Name = "cmbConv5";
+            this.cmbConv5.Size = new System.Drawing.Size(193, 32);
+            this.cmbConv5.TabIndex = 29;
+            // 
+            // cmbConv6
+            // 
+            this.cmbConv6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbConv6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConv6.FormattingEnabled = true;
+            this.cmbConv6.Location = new System.Drawing.Point(998, 151);
+            this.cmbConv6.Name = "cmbConv6";
+            this.cmbConv6.Size = new System.Drawing.Size(194, 32);
+            this.cmbConv6.TabIndex = 30;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -474,7 +534,6 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
             this.tableLayoutPanel3.Controls.Add(this.dgvAnteriores, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 433);
@@ -572,7 +631,7 @@
             // 
             this.cmbSust.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSust.FormattingEnabled = true;
-            this.cmbSust.Location = new System.Drawing.Point(159, 11);
+            this.cmbSust.Location = new System.Drawing.Point(159, 5);
             this.cmbSust.Name = "cmbSust";
             this.cmbSust.Size = new System.Drawing.Size(230, 32);
             this.cmbSust.TabIndex = 3;
@@ -587,77 +646,6 @@
             this.txtTemp.TabIndex = 4;
             this.txtTemp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTemp.TextChanged += new System.EventHandler(this.faseSust);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(799, 3);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 132);
-            this.tableLayoutPanel5.TabIndex = 3;
-            // 
-            // cmbConv1
-            // 
-            this.cmbConv1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbConv1.FormattingEnabled = true;
-            this.cmbConv1.Location = new System.Drawing.Point(3, 155);
-            this.cmbConv1.Name = "cmbConv1";
-            this.cmbConv1.Size = new System.Drawing.Size(193, 21);
-            this.cmbConv1.TabIndex = 25;
-            // 
-            // cmbConv2
-            // 
-            this.cmbConv2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbConv2.FormattingEnabled = true;
-            this.cmbConv2.Location = new System.Drawing.Point(202, 155);
-            this.cmbConv2.Name = "cmbConv2";
-            this.cmbConv2.Size = new System.Drawing.Size(193, 21);
-            this.cmbConv2.TabIndex = 26;
-            this.cmbConv2.SelectedValueChanged += new System.EventHandler(this.convVal2);
-            // 
-            // cmbConv3
-            // 
-            this.cmbConv3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbConv3.FormattingEnabled = true;
-            this.cmbConv3.Location = new System.Drawing.Point(401, 155);
-            this.cmbConv3.Name = "cmbConv3";
-            this.cmbConv3.Size = new System.Drawing.Size(193, 21);
-            this.cmbConv3.TabIndex = 27;
-            // 
-            // cmbConv4
-            // 
-            this.cmbConv4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbConv4.FormattingEnabled = true;
-            this.cmbConv4.Location = new System.Drawing.Point(600, 155);
-            this.cmbConv4.Name = "cmbConv4";
-            this.cmbConv4.Size = new System.Drawing.Size(193, 21);
-            this.cmbConv4.TabIndex = 28;
-            // 
-            // cmbConv5
-            // 
-            this.cmbConv5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbConv5.FormattingEnabled = true;
-            this.cmbConv5.Location = new System.Drawing.Point(799, 155);
-            this.cmbConv5.Name = "cmbConv5";
-            this.cmbConv5.Size = new System.Drawing.Size(193, 21);
-            this.cmbConv5.TabIndex = 29;
-            // 
-            // cmbConv6
-            // 
-            this.cmbConv6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbConv6.FormattingEnabled = true;
-            this.cmbConv6.Location = new System.Drawing.Point(998, 155);
-            this.cmbConv6.Name = "cmbConv6";
-            this.cmbConv6.Size = new System.Drawing.Size(194, 21);
-            this.cmbConv6.TabIndex = 30;
             // 
             // Fisica_II
             // 
@@ -722,7 +710,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbSust;
         private System.Windows.Forms.TextBox txtTemp;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.ComboBox cmbConv1;
         private System.Windows.Forms.ComboBox cmbConv2;
         private System.Windows.Forms.ComboBox cmbConv3;
