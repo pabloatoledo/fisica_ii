@@ -26,19 +26,31 @@ namespace Fisica_II
         
         private void Ondas_Load(object sender, EventArgs e)
         {
+            double f, T, V, L;
+
             dt = new DataTable();
             dt.Columns.Add("t");
             dt.Columns.Add("A cos ( k x  - w t )");
             dgvTabla.DataSource = dt;
 
-            chart1.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
 
             calculaTabla();
+
+            f = w / 6.28;
+            T = 1 / f;
+            V = w / k;
+            L = 6.28 / k;
+
+            lblFrecuencia.Text = f.ToString() + " Hz";
+            lblPeriodo.Text = T.ToString() + " s";
+            lblVelocidad.Text = V.ToString() + " m/s";
+            lblLongOnda.Text = L.ToString() + " m";
         }
 
         private void calculaTabla()
         {
-            for (int t = 1; t < 11; t++)
+            for (double t = 1; t < 10.1; t = t + 0.2)
             {
                 double resultado = A * Math.Cos((k * x) - (w * t));
 
@@ -46,11 +58,11 @@ namespace Fisica_II
                 row["t"] = t;
                 row["A cos ( k x  - w t )"] = resultado;
                 dt.Rows.Add(row);
-                //grafica(t, resultado);
+                grafica(t, resultado);
             }
         }
 
-        private void grafica (int t, double resultado)
+        private void grafica (double t, double resultado)
         {
             chart1.Series["Series1"].Points.AddXY(t, resultado);
         }
